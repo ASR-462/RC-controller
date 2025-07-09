@@ -1,0 +1,24 @@
+name: Deploy PWA to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Для PWA не потрібна збірка, просто завантажуємо файли
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: .  # Завантажуємо всю кореневу папку
+
+      - name: Deploy
+        uses: actions/deploy-pages@v2
