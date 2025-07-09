@@ -1,0 +1,28 @@
+{
+    "name": "RC Controller",
+    "short_name": "RC Controller",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#1a2a6c",
+    "theme_color": "#1a2a6c",
+    "description": "Пульт дистанційного керування для ESP32 через BLE",
+    "icons": [
+        {
+            "src": "icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon-512-maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "orientation": "portrait-primary"
+}
