@@ -5,20 +5,24 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
+  build-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      # Для PWA не потрібна збірка, просто завантажуємо файли
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
         with:
-          path: .  # Завантажуємо всю кореневу папку
+          fetch-depth: 0  # Важливо для отримання всієї історії
 
-      - name: Deploy
-        uses: actions/deploy-pages@v2
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '.'  # Завантажуємо всю кореневу папку
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
